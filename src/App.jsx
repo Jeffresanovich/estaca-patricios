@@ -1,13 +1,14 @@
 import * as React from "react";
-import Container from "@mui/material/Container";
+import PublicRoute from "./router/PublicRoute";
 
-import LoginScreen from "./screens/LoginScreen";
-import LandingScreen from "./screens/LandingScreen";
+//Redux
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 export default function App() {
   return (
-    <Container maxWidth='sm'>
-      <LandingScreen />
-    </Container>
+    <Provider store={store}>
+      <PublicRoute />
+    </Provider>
   );
 }
