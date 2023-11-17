@@ -1,14 +1,14 @@
 const donor = {
   firstName: "",
   lastName: "",
-  unit: "",
-  phoneNumber: "",
+  ward: "",
+  phone: "",
   dni: "",
   isReserved: false,
 };
 
 const horas = ["08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30"];
-const turnos = 4;
+const turnos = 5;
 
 const times = [];
 for (let i = 0; i < horas.length; i++) {

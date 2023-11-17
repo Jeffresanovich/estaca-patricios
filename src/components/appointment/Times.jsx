@@ -12,15 +12,25 @@ import {
   setTimeId,
 } from "../../redux/slice/appointmentSlice";
 
+import { usePatchAppointmentMutation } from "../../services/patriciosStakeApi";
+
 const Times = () => {
   const { data } = useGetAppointmentData();
 
   const dispatch = useDispatch();
   const time = useSelector((state) => state.appointmentSlice.time);
+  const timeId = useSelector((state) => state.appointmentSlice.timeId);
+
+  const [patchAppointment] = usePatchAppointmentMutation();
 
   const handleTime = (index) => {
     dispatch(setTime(data[index]));
     dispatch(setTimeId(index));
+  };
+
+  const handleOrder = (index) => {
+    dispatch(setOrder(index));
+    patchAppointment([timeId, index, { isReserved: true }]);
   };
 
   const styles = {
@@ -71,7 +81,7 @@ const Times = () => {
                   component='h1'
                   variant='h1'
                   textAlign={"center"}
-                  onClick={() => dispatch(setTime(""))}
+                  onClick={() => dispatch(setTime(null))}
                 >
                   {time.time}
                 </Typography>
@@ -83,7 +93,7 @@ const Times = () => {
                     variant='h5'
                     textAlign={"center"}
                     sx={!element.isReserved && styles.box}
-                    onClick={() => dispatch(setOrder(index))}
+                    onClick={() => handleOrder(index)}
                   >
                     {index + 1}
                     <p>{element.isReserved && "Ocupado"}</p>

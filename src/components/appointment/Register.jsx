@@ -24,6 +24,7 @@ const Register = () => {
 
   const [patchAppointment] = usePatchAppointmentMutation();
   const time = useSelector((state) => state.appointmentSlice.time);
+  const timeId = useSelector((state) => state.appointmentSlice.timeId);
   const order = useSelector((state) => state.appointmentSlice.order);
 
   const dispatch = useDispatch();
@@ -43,10 +44,16 @@ const Register = () => {
       isReserved: true,
     };
 
-    patchAppointment([time, order, form]);
+    patchAppointment([timeId, order, form]);
 
-    console.log(form, time, order);
-    //alert("LOGICA PARA REGISTRAR AL DONANTE");
+    alert("Turno registrado con exito");
+    dispatch(cleanAppointment());
+  };
+
+  const handleCancel = () => {
+    dispatch(cleanAppointment());
+    patchAppointment([timeId, order, { isReserved: false }]);
+    alert("Turno cancelado con exito");
   };
 
   return (
@@ -151,7 +158,7 @@ const Register = () => {
                 mb: 2,
                 width: 200,
               }}
-              onClick={() => dispatch(cleanAppointment())}
+              onClick={() => handleCancel()}
             >
               Cancelar
             </Button>
