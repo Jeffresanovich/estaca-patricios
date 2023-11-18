@@ -1,5 +1,5 @@
 //Styles
-import { Grid, Box, Typography, Paper, Alert } from "@mui/material";
+import { Grid, Box, Typography, Stack, Paper, Alert } from "@mui/material";
 
 //Custom Hook
 import useGetAppointmentData from "../../hook/useGetAppointmentData";
@@ -29,49 +29,58 @@ const Times = () => {
     refetch();
   };
 
-  const handleOrder = (index) => {
-    dispatch(setOrder(index));
-    patchAppointment([timeId, index, { isReserved: true }]);
-    refetch();
+  const handleOrder = (element, index) => {
+    if (element.isReserved) Alert("Horario no esta disponible");
+    else {
+      dispatch(setOrder(index));
+      patchAppointment([timeId, index, { isReserved: true }]);
+      refetch();
+    }
   };
 
   const styles = {
     box: {
-      /* transition: "width 0.3s, height 0.3s", // Añadir transición suave
+      color: "grey",
+      paddingY: 2,
+      transition: "width 0.3s, height 0.3s", // Añadir transición suave
       "&:hover": {
-        //"box-shadow": "0 0 15px rgba(0, 0, 0, 0.5)",
-        transform: "scale(2)",
-      },*/
+        "box-shadow": "0 0 15px rgba(0, 0, 0, 0.5)",
+        transform: "scale(1.5)",
+        color: "black",
+      },
+    },
+    boxDisable: {
+      color: "white",
+      paddingY: 2,
+      background: "grey",
     },
   };
 
   return (
-    <Box
+    <Stack
+      spacing={4}
       sx={{
-        my: 10,
-        mx: 5,
-        px: 6,
-        display: "flex",
-        flexDirection: "column",
+        p: 6,
         alignItems: "center",
       }}
-      border={2}
     >
-      <Typography component='h3' variant='h5' sx={{ my: 1 }}>
-        Turnos disponibles:
+      <Typography component='h3' variant='h5'>
+        Seleccione un horario:
       </Typography>
-
-      <Grid container spacing={3} border={2} sx={{ my: 4 }}>
+      {/* Este "spacing={3}" hace que la grid se desface */}
+      <Grid container spacing={3}>
         {!time ? (
           data?.map((element, index) => (
-            <Grid key={index} item xs={4} sm={4}>
+            <Grid item key={index} paddingX={3} xs={6} sm={6} md={4}>
               <Typography
-                component='h1'
+                //component='h1'
                 variant='h5'
                 textAlign={"center"}
                 sx={styles.box}
+                component={Paper}
+                elevation={6}
+                square
                 onClick={() => handleTime(index)}
-                border={2}
               >
                 {element.time}
               </Typography>
@@ -95,18 +104,17 @@ const Times = () => {
                   component='h1'
                   variant='h5'
                   textAlign={"center"}
-                  sx={styles.box}
-                  onClick={() => handleOrder(index)}
+                  sx={element.isReserved ? styles.boxDisable : styles.box}
+                  onClick={() => handleOrder(element, index)}
                 >
                   {index + 1}
                 </Typography>
-                <h1>{element.isReserved && "Ocupado"}</h1>
               </Grid>
             ))}
           </>
         )}
       </Grid>
-    </Box>
+    </Stack>
   );
 };
 
