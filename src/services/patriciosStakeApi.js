@@ -18,7 +18,7 @@ export const patriciosStakeApi = createApi({
     //Update Appointment
     patchAppointment: builder.mutation({
       query: ([time, order, body]) => ({
-        url: `appointment/${time}/appointment/${order}.json`,
+        url: `appointment/${time}/order/${order}.json`,
         method: "PATCH",
         body: body,
       }),

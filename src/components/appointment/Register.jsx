@@ -107,9 +107,9 @@ const Register = () => {
               {isLoading ? (
                 <CircularProgress />
               ) : (
-                wards.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
+                wards.map((ward, index) => (
+                  <MenuItem key={index} value={ward}>
+                    {ward}
                   </MenuItem>
                 ))
               )}

@@ -1,4 +1,7 @@
-const donor = {
+const horas = ["08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30"];
+const turnos = 5;
+
+const donador = {
   firstName: "",
   lastName: "",
   ward: "",
@@ -7,16 +10,13 @@ const donor = {
   isReserved: false,
 };
 
-const horas = ["08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30"];
-const turnos = 5;
-
-const times = [];
+export const times = [];
 for (let i = 0; i < horas.length; i++) {
-  const appointment = [];
+  const order = [];
   for (let i = 0; i < turnos; i++) {
-    appointment.push(donor);
+    order.push(donador);
   }
-  times.push({ time: horas[i], appointment });
+  times.push({ time: horas[i], order });
 }
 
 console.log(JSON.stringify(times, null, " "));
