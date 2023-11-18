@@ -11,7 +11,10 @@ import {
   CircularProgress,
 } from "@mui/material";
 
-import { useGetAllWardQuery } from "../../services/patriciosStakeApi";
+import {
+  useGetAllAppointmentQuery,
+  useGetAllWardQuery,
+} from "../../services/patriciosStakeApi";
 
 import { usePatchAppointmentMutation } from "../../services/patriciosStakeApi";
 
@@ -21,6 +24,7 @@ import { cleanAppointment } from "../../redux/slice/appointmentSlice";
 
 const Register = () => {
   const { data: wards, isLoading } = useGetAllWardQuery();
+  const { refetch } = useGetAllAppointmentQuery();
 
   const [patchAppointment] = usePatchAppointmentMutation();
   const time = useSelector((state) => state.appointmentSlice.time);
@@ -48,12 +52,14 @@ const Register = () => {
 
     alert("Turno registrado con exito");
     dispatch(cleanAppointment());
+    refetch();
   };
 
   const handleCancel = () => {
     dispatch(cleanAppointment());
     patchAppointment([timeId, order, { isReserved: false }]);
     alert("Turno cancelado con exito");
+    refetch();
   };
 
   return (

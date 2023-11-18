@@ -102,7 +102,7 @@ const Times = () => {
               <Grid key={index} item xs={3} sm={3}>
                 <Typography
                   component='h1'
-                  variant='h5'
+                  variant='h3'
                   textAlign={"center"}
                   sx={element.isReserved ? styles.boxDisable : styles.box}
                   onClick={() => handleOrder(element, index)}
