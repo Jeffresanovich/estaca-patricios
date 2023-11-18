@@ -9,6 +9,7 @@ import {
   Typography,
   Button,
   CircularProgress,
+  Alert,
 } from "@mui/material";
 
 import {
@@ -65,17 +66,22 @@ const Register = () => {
   return (
     <Box
       sx={{
-        my: 8,
+        my: 4,
         mx: 4,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
+      {order && (
+        <Alert severity='info' mt={5}>
+          Usted se esta registrando al turno {order + 1} de las {time.time}
+        </Alert>
+      )}
       <Typography component='h3' variant='h5'>
         Datos del donante:
       </Typography>
-      <Box component='form' noValidate onSubmit={handleSubmit} sx={{ my: 5 }}>
+      <Box component='form' noValidate onSubmit={handleSubmit} sx={{ my: 4 }}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <TextField

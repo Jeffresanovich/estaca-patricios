@@ -60,7 +60,7 @@ const Times = () => {
     <Stack
       spacing={4}
       sx={{
-        p: 6,
+        p: 5,
         alignItems: "center",
       }}
     >
@@ -73,13 +73,10 @@ const Times = () => {
           data?.map((element, index) => (
             <Grid item key={index} paddingX={3} xs={6} sm={6} md={4}>
               <Typography
-                //component='h1'
+                component='h1'
                 variant='h5'
                 textAlign={"center"}
                 sx={styles.box}
-                component={Paper}
-                elevation={6}
-                square
                 onClick={() => handleTime(index)}
               >
                 {element.time}
