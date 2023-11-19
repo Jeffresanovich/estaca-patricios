@@ -5,13 +5,13 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC1Qoc9zLKkig26BiZ-B7GvLwuM9ukhnl4",
-  authDomain: "estaca-patricios.firebaseapp.com",
-  databaseURL: "https://estaca-patricios-default-rtdb.firebaseio.com",
-  projectId: "estaca-patricios",
-  storageBucket: "estaca-patricios.appspot.com",
-  messagingSenderId: "1047791476140",
-  appId: "1:1047791476140:web:6e2a98e2f340639d40ae09",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_DATA_BASE_URL,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Initialize Firebase

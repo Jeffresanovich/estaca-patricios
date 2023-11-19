@@ -1,5 +1,6 @@
-import { base_url } from "../firebase/BaseURL";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+const base_url = import.meta.env.VITE_BASE_URL;
 
 export const patriciosStakeApi = createApi({
   reducerPath: "patriciosStakeApi",
