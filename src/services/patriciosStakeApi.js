@@ -9,17 +9,17 @@ export const patriciosStakeApi = createApi({
   }),
   endpoints: (builder) => ({
     getAllWard: builder.query({
-      query: () => "ward.json",
+      query: () => "wards.json",
     }),
 
     getAllAppointment: builder.query({
-      query: () => "appointment.json",
+      query: () => "appointments.json",
     }),
 
     //Update Appointment
     patchAppointment: builder.mutation({
       query: ([time, order, body]) => ({
-        url: `appointment/${time}/order/${order}.json`,
+        url: `appointments/${time}/order/${order}.json`,
         method: "PATCH",
         body: body,
       }),

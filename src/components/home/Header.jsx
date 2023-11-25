@@ -1,27 +1,69 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Box, Button, CssBaseline, Grid, Typography } from "@mui/material";
+import Copyright from "../Copyright";
+import { Link } from "react-router-dom";
 const Header = () => {
+  //<Grid item xs={12} sm={12} md={5}></Grid>
   return (
-    <Grid container border={5}>
-      <Grid item border={1}>
-        <img
-          src='https://i.blogs.es/e32e91/trucos-enfocar-fotografia-paisaje-01/1366_2000.jpg'
-          alt='Descripción de la imagen'
-        />
+    <CssBaseline>
+      <Grid
+        container
+        component='main'
+        sx={{
+          backgroundImage:
+            "url(https://content.churchofjesuschrist.org/acp/bc/Caribe%20Area/Caribe%20Area/2023/Events/Sigue-A-Jesucrito/1200x675/jesus-christ.jpg)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography
+            component='h1'
+            variant='h1'
+            fontFamily={"monospace"}
+            color='white'
+          ></Typography>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={{
+            display: "flex",
+            justifyContent: "end",
+            alignItems: "center",
+            margin: 10,
+          }}
+        >
+          <Button
+            variant='text'
+            sx={{ background: "rgba(0,100 , 255, 0.8)", padding: 2 }}
+          >
+            <Link to='/DonacionSangre'>
+              Ir al registro de Donacion de Sangre
+            </Link>
+          </Button>
+        </Grid>
       </Grid>
-      <Grid item border={1}>
-        Texto 1
-      </Grid>
-      <Grid item border={1}>
-        Texto 2
-      </Grid>
-      <Grid item border={1}>
-        Texto 3
-      </Grid>
-      <Grid item border={1}>
-        Nada
-      </Grid>
-    </Grid>
+    </CssBaseline>
   );
 };
 

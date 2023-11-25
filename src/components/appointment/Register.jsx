@@ -56,9 +56,9 @@ const Register = () => {
     refetch();
   };
 
-  const handleCancel = () => {
+  const handleCancel = async () => {
+    await patchAppointment([timeId, order, { isReserved: false }]);
     dispatch(cleanAppointment());
-    patchAppointment([timeId, order, { isReserved: false }]);
     alert("Turno cancelado con exito");
     refetch();
   };
@@ -73,11 +73,6 @@ const Register = () => {
         alignItems: "center",
       }}
     >
-      {order && (
-        <Alert severity='info' mt={5}>
-          Usted se esta registrando al turno {order + 1} de las {time.time}
-        </Alert>
-      )}
       <Typography component='h3' variant='h5'>
         Datos del donante:
       </Typography>
@@ -148,6 +143,11 @@ const Register = () => {
             />
           </Grid>
         </Grid>
+        {order && (
+          <Alert severity='info' sx={{ margin: 3 }}>
+            Usted se esta registrando al turno {order + 1} de las {time.time}
+          </Alert>
+        )}
         <Grid container justifyContent={"space-around"} sx={{ my: 3 }}>
           <Grid item>
             <Button

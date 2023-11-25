@@ -65,7 +65,7 @@ const Times = () => {
       }}
     >
       <Typography component='h3' variant='h5'>
-        Seleccione un horario:
+        Seleccione un Turno:
       </Typography>
       {/* Este "spacing={3}" hace que la grid se desface */}
       <Grid container spacing={3}>
