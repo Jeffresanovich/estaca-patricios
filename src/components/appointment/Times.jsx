@@ -1,5 +1,13 @@
 //Styles
-import { Grid, Box, Typography, Stack, Paper, Alert } from "@mui/material";
+import {
+  Grid,
+  Box,
+  Typography,
+  Stack,
+  Paper,
+  Alert,
+  Button,
+} from "@mui/material";
 
 //Custom Hook
 import useGetAppointmentData from "../../hook/useGetAppointmentData";
@@ -14,6 +22,8 @@ import {
 
 import { usePatchAppointmentMutation } from "../../services/patriciosStakeApi";
 
+import UndoIcon from "@mui/icons-material/Undo";
+
 const Times = () => {
   const { data, refetch } = useGetAppointmentData();
 
@@ -25,11 +35,14 @@ const Times = () => {
 
   const styles = {
     box: {
+      color: "white",
+      background: "rgba(186, 0, 0, 0.6)",
       margin: "auto",
       maxWidth: 400,
       transition: "box-shadow 0.3s ease-in-out", // Agrega transición a la sombra
       "&:hover": {
-        boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2)", // Cambia la sombra al pasar el mouse
+        boxShadow: "5px 30px 30px 5px rgba(0,0,0,0.6)", // Cambia la sombra al pasar el mouse
+        background: "rgba(186, 0, 0, 0.8)",
       },
     },
     boxDisable: {
@@ -62,27 +75,22 @@ const Times = () => {
         alignItems: "center",
       }}
     >
-      <Typography component='h3' variant='h2' marginTop={4}>
-        TURNOS
-      </Typography>
-      {/* Este "spacing={3}" hace que la grid se desface */}
+      <Typography component='h1' variant='h4' marginTop={5}></Typography>
       <Grid container spacing={3}>
         {!time ? (
           data?.map((element, index) => (
-            <Grid item key={index} xs={12} sm={12} md={6}>
+            <Grid item key={index} xs={12} sm={12} md={6} width={90}>
               <Paper
                 variant='elevation'
                 elevation={4}
                 square={false}
-                className={styles.box}
+                sx={styles.box}
               >
                 <Typography
                   component='Paper'
                   variant='h1'
                   textAlign={"center"}
                   onClick={() => handleTime(index)}
-                  //border={2}
-
                   height={140}
                   sx={{
                     display: "flex",
@@ -97,29 +105,47 @@ const Times = () => {
           ))
         ) : (
           <>
-            {time.order?.map((element, index) => (
-              <Grid key={index} item xs={3} sm={3}>
-                <Typography
-                  component='h1'
-                  variant='h3'
-                  textAlign={"center"}
-                  sx={{}}
-                  onClick={() => handleOrder(element, index)}
-                >
-                  {index + 1}
-                </Typography>
-              </Grid>
-            ))}
-            <Grid item xs={12} sm={12}>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              sx={{
+                textAlign: "center",
+                //display: "flex",
+                //justifyContent: "center",
+                //alignItems: "center",
+              }}
+            >
+              <Button color='error' onClick={() => dispatch(setTime(null))}>
+                <UndoIcon sx={{ fontSize: 100 }} />
+              </Button>
               <Typography
                 component='h1'
                 variant='h1'
-                textAlign={"center"}
-                onClick={() => dispatch(setTime(null))}
+                sx={{ color: "rgba(186, 0, 1, 0.8)" }}
               >
                 {time.time}
               </Typography>
             </Grid>
+            {time.order?.map((element, index) => (
+              <Grid item key={index} xs={12} sm={12} md={6} width={90}>
+                <Paper
+                  variant='elevation'
+                  elevation={4}
+                  square={false}
+                  sx={styles.box}
+                >
+                  <Typography
+                    component='h1'
+                    variant='h1'
+                    textAlign='center'
+                    onClick={() => handleOrder(element, index)}
+                  >
+                    {index + 1}
+                  </Typography>
+                </Paper>
+              </Grid>
+            ))}
           </>
         )}
       </Grid>

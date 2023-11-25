@@ -48,7 +48,7 @@ const NavBar = () => {
               variant='h6'
               component='div'
               color='#fff'
-              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+              //sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
               ESTACA PATRICIOS
             </Typography>

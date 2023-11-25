@@ -54,7 +54,7 @@ const Header = () => {
           }}
         >
           <Button
-            variant='outlined'
+            variant='contained'
             color='warning'
             sx={{ background: "rgba(251, 97, 7, 0.7)", padding: 2 }}
           >
