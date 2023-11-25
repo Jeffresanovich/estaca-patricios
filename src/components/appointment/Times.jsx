@@ -35,20 +35,20 @@ const Times = () => {
 
   const styles = {
     box: {
-      color: "white",
-      background: "rgba(186, 0, 0, 0.6)",
+      color: "rgba(186, 0, 0, 0.9)",
+      background: "white",
       margin: "auto",
       maxWidth: 400,
       transition: "box-shadow 0.3s ease-in-out", // Agrega transición a la sombra
       "&:hover": {
+        color: "white",
         boxShadow: "5px 30px 30px 5px rgba(0,0,0,0.6)", // Cambia la sombra al pasar el mouse
-        background: "rgba(186, 0, 0, 0.8)",
+        background: "rgba(186, 0, 0, 0.9)",
       },
     },
     boxDisable: {
       color: "white",
-      paddingY: 2,
-      background: "grey",
+      background: "rgba(186, 0, 0, 0.9)",
     },
   };
 
@@ -133,7 +133,7 @@ const Times = () => {
                   variant='elevation'
                   elevation={4}
                   square={false}
-                  sx={styles.box}
+                  sx={element.isReserved ? styles.boxDisable : styles.box}
                 >
                   <Typography
                     component='h1'
