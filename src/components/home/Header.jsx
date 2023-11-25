@@ -3,7 +3,6 @@ import { Box, Button, CssBaseline, Grid, Typography } from "@mui/material";
 import Copyright from "../Copyright";
 import { Link } from "react-router-dom";
 const Header = () => {
-  //<Grid item xs={12} sm={12} md={5}></Grid>
   return (
     <CssBaseline>
       <Grid
@@ -48,14 +47,16 @@ const Header = () => {
           lg={12}
           sx={{
             display: "flex",
-            justifyContent: "end",
+            justifyContent: "right",
             alignItems: "center",
-            margin: 10,
+            marginX: 10,
+            marginTop: 40,
           }}
         >
           <Button
-            variant='text'
-            sx={{ background: "rgba(0,100 , 255, 0.8)", padding: 2 }}
+            variant='outlined'
+            color='warning'
+            sx={{ background: "rgba(251, 97, 7, 0.7)", padding: 2 }}
           >
             <Link to='/DonacionSangre'>
               Ir al registro de Donacion de Sangre

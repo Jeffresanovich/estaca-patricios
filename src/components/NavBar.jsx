@@ -15,28 +15,44 @@ const navItems = [
   //{ name: "Donación", navTo: "DonacionSangre" },
 ];
 
+//sx={{ mr: 2, display: { sm: 'none' } }}
+
 const NavBar = () => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar component='nav' sx={{ background: "rgba(0, 0, 0, 0.5)" }}>
         <Toolbar>
-          <Typography
-            variant='h6'
-            component='div'
+          <Box
             sx={{
               flexGrow: 1,
-              color: "#fff",
-              display: "flex",
               justifyContent: "initial",
               alignItems: "center",
+              color: "#fff",
+              display: "flex",
             }}
           >
-            <HomeRoundedIcon sx={{ fontSize: 30, marginRight: 2 }} />
             <NavLink to='/' end>
-              ESTACA PATRICIOS
+              <Box
+                sx={{
+                  display: "flex",
+                  flexGrow: 1,
+                  justifyContent: "initial",
+                  alignItems: "center",
+                }}
+              >
+                <HomeRoundedIcon sx={{ fontSize: 30, marginRight: 2 }} />
+              </Box>
             </NavLink>
-          </Typography>
+            <Typography
+              variant='h6'
+              component='div'
+              color='#fff'
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              ESTACA PATRICIOS
+            </Typography>
+          </Box>
           <Box>
             {/*
 
@@ -61,7 +77,7 @@ const NavBar = () => {
             <Box
               sx={{
                 display: "flex",
-                justifyContent: "center",
+                justifyContent: "end",
                 alignItems: "center",
                 paddingX: 3,
                 fontSize: 15,

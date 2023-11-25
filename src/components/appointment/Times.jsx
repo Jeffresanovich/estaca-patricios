@@ -23,6 +23,22 @@ const Times = () => {
 
   const [patchAppointment] = usePatchAppointmentMutation();
 
+  const styles = {
+    box: {
+      margin: "auto",
+      maxWidth: 400,
+      transition: "box-shadow 0.3s ease-in-out", // Agrega transición a la sombra
+      "&:hover": {
+        boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2)", // Cambia la sombra al pasar el mouse
+      },
+    },
+    boxDisable: {
+      color: "white",
+      paddingY: 2,
+      background: "grey",
+    },
+  };
+
   const handleTime = (index) => {
     dispatch(setTime(data[index]));
     dispatch(setTimeId(index));
@@ -38,53 +54,62 @@ const Times = () => {
     }
   };
 
-  const styles = {
-    box: {
-      color: "grey",
-      paddingY: 2,
-      transition: "width 0.3s, height 0.3s", // Añadir transición suave
-      "&:hover": {
-        "box-shadow": "0 0 15px rgba(0, 0, 0, 0.5)",
-        transform: "scale(1.5)",
-        color: "black",
-      },
-    },
-    boxDisable: {
-      color: "white",
-      paddingY: 2,
-      background: "grey",
-    },
-  };
-
   return (
     <Stack
-      spacing={4}
+      spacing={0}
       sx={{
-        p: 5,
+        p: 3,
         alignItems: "center",
       }}
     >
-      <Typography component='h3' variant='h5'>
-        Seleccione un Turno:
+      <Typography component='h3' variant='h2' marginTop={4}>
+        TURNOS
       </Typography>
       {/* Este "spacing={3}" hace que la grid se desface */}
       <Grid container spacing={3}>
         {!time ? (
           data?.map((element, index) => (
-            <Grid item key={index} paddingX={3} xs={6} sm={6} md={4}>
-              <Typography
-                component='h1'
-                variant='h5'
-                textAlign={"center"}
-                sx={styles.box}
-                onClick={() => handleTime(index)}
+            <Grid item key={index} xs={12} sm={12} md={6}>
+              <Paper
+                variant='elevation'
+                elevation={4}
+                square={false}
+                className={styles.box}
               >
-                {element.time}
-              </Typography>
+                <Typography
+                  component='Paper'
+                  variant='h1'
+                  textAlign={"center"}
+                  onClick={() => handleTime(index)}
+                  //border={2}
+
+                  height={140}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  {element.time}
+                </Typography>
+              </Paper>
             </Grid>
           ))
         ) : (
           <>
+            {time.order?.map((element, index) => (
+              <Grid key={index} item xs={3} sm={3}>
+                <Typography
+                  component='h1'
+                  variant='h3'
+                  textAlign={"center"}
+                  sx={{}}
+                  onClick={() => handleOrder(element, index)}
+                >
+                  {index + 1}
+                </Typography>
+              </Grid>
+            ))}
             <Grid item xs={12} sm={12}>
               <Typography
                 component='h1'
@@ -95,19 +120,6 @@ const Times = () => {
                 {time.time}
               </Typography>
             </Grid>
-            {time.order?.map((element, index) => (
-              <Grid key={index} item xs={3} sm={3}>
-                <Typography
-                  component='h1'
-                  variant='h3'
-                  textAlign={"center"}
-                  sx={element.isReserved ? styles.boxDisable : styles.box}
-                  onClick={() => handleOrder(element, index)}
-                >
-                  {index + 1}
-                </Typography>
-              </Grid>
-            ))}
           </>
         )}
       </Grid>
