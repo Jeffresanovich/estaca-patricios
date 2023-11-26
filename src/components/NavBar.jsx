@@ -9,19 +9,19 @@ import PersonSharpIcon from "@mui/icons-material/PersonSharp";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { NavLink } from "react-router-dom";
 
+/*
 const navItems = [
   { name: "Inicio", navTo: "/" },
-  //{ name: "Noticias", navTo: "" },
-  //{ name: "Donación", navTo: "DonacionSangre" },
+  { name: "Noticias", navTo: "" },
+  { name: "Perfil", navTo: "" },
 ];
+*/
 
-//sx={{ mr: 2, display: { sm: 'none' } }}
-
-const NavBar = () => {
+const NavBar = ({ navPosition, navItems }) => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component='nav' sx={{ background: "rgba(0, 0, 0, 0.5)" }}>
+      <AppBar position='static' sx={{ background: "rgba(0, 0, 0, 0.5)" }}>
         <Toolbar>
           <Box
             sx={{
@@ -54,26 +54,14 @@ const NavBar = () => {
             </Typography>
           </Box>
           <Box>
-            {/*
-
-            {navItems.map((item, index) => (
+            {navItems?.map((item, index) => (
               <NavLink key={index} to={item.navTo}>
                 <Button sx={{ color: "#fff" }}>{item.name}</Button>
               </NavLink>
             ))}
-              */}
           </Box>
 
-          <NavLink
-            to='/InicioSesion'
-            /*
-            style={({ isActive }) => {
-              return {
-                display: isActive ? "none" : "block",
-              };
-            }}
-            */
-          >
+          <NavLink to='/InicioSesion'>
             <Box
               sx={{
                 display: "flex",
