@@ -75,7 +75,6 @@ const Times = () => {
         alignItems: "center",
       }}
     >
-      <Typography component='h1' variant='h4' marginTop={5}></Typography>
       <Grid container spacing={3}>
         {!time ? (
           data?.map((element, index) => (
@@ -85,13 +84,14 @@ const Times = () => {
                 elevation={4}
                 square={false}
                 sx={styles.box}
+                width={100}
               >
                 <Typography
                   component='Paper'
-                  variant='h1'
+                  variant='h2'
                   textAlign={"center"}
                   onClick={() => handleTime(index)}
-                  height={140}
+                  height={100}
                   sx={{
                     display: "flex",
                     justifyContent: "center",

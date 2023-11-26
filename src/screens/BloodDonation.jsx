@@ -19,26 +19,27 @@ const BloodDonation = () => {
   return (
     <>
       <NavBar />
-      <Grid container component='main' sx={{ height: "100vh" }}>
+      <Grid container component='main' /*sx={{ height: "100vh" }}*/ conta>
         <CssBaseline />
         <Grid
           item
           //marginTop={10}
           xs={12}
-          sm={4}
+          sm={7}
           md={7}
           sx={{
             backgroundImage: `url(${imgDonacionSangre})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",
+            height: { xs: "300px", md: "100vh", sm: "100vh" },
           }}
         />
 
         <Grid
           item
           xs={12}
-          sm={8}
+          sm={5}
           md={5}
           sx={{
             display: "flex",
