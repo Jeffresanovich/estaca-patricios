@@ -87,7 +87,6 @@ const Times = () => {
                 width={100}
               >
                 <Typography
-                  component='Paper'
                   variant='h2'
                   textAlign={"center"}
                   onClick={() => handleTime(index)}

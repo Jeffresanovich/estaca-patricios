@@ -19,7 +19,7 @@ const BloodDonation = () => {
   return (
     <>
       <NavBar />
-      <Grid container component='main' /*sx={{ height: "100vh" }}*/ conta>
+      <Grid container component='main' /*sx={{ height: "100vh" }}*/>
         <CssBaseline />
         <Grid
           item
